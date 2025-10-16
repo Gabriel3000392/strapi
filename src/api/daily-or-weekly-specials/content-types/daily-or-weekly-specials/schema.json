@@ -1,0 +1,56 @@
+{
+  "kind": "collectionType",
+  "collectionName": "daily_or_weekly_specials1",
+  "info": {
+    "singularName": "daily-or-weekly-specials",
+    "pluralName": "daily-or-weekly-specials1",
+    "displayName": "Daily or Weekly Specials"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "menu_item": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::menu-items.menu-items",
+      "inversedBy": "daily_or_weekly_specials"
+    },
+    "price_override": {
+      "type": "decimal",
+      "min": 0
+    },
+    "start_date": {
+      "type": "date",
+      "required": true
+    },
+    "end_date": {
+      "type": "date",
+      "required": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "priority": {
+      "type": "integer",
+      "default": 0
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "team_members1",
+  "info": {
+    "singularName": "team-members",
+    "pluralName": "team-members1",
+    "displayName": "Team Members"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "role": {
+      "type": "string",
+      "required": true
+    },
+    "photo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "bio": {
+      "type": "blocks"
+    },
+    "order": {
+      "type": "integer",
+      "default": 0
+    }
+  }
+}

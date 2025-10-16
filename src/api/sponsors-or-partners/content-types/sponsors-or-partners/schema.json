@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sponsors_or_partners1",
+  "info": {
+    "singularName": "sponsors-or-partners",
+    "pluralName": "sponsors-or-partners1",
+    "displayName": "Sponsors or Partners"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "website": {
+      "type": "string",
+      "regex": "^https?:\\/\\/"
+    },
+    "blurb": {
+      "type": "text"
+    },
+    "order": {
+      "type": "integer",
+      "default": 0
+    }
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "kind": "collectionType",
+  "collectionName": "menu_items1",
+  "info": {
+    "singularName": "menu-items",
+    "pluralName": "menu-items1",
+    "displayName": "Menu Items"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "menu_category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::menu-categories.menu-categories",
+      "inversedBy": "menu_items"
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "price": {
+      "type": "decimal",
+      "required": true,
+      "min": 0
+    },
+    "description": {
+      "type": "blocks"
+    },
+    "photo": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "available": {
+      "type": "boolean",
+      "default": true
+    },
+    "tags": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::tag.tag",
+      "mappedBy": "menu_items"
+    },
+    "daily_or_weekly_specials": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::daily-or-weekly-specials.daily-or-weekly-specials",
+      "mappedBy": "menu_item"
+    }
+  }
+}
