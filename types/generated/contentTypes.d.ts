@@ -485,6 +485,35 @@ export interface ApiGalleryAlbumGalleryAlbum
   };
 }
 
+export interface ApiHeroImageHeroImage extends Struct.SingleTypeSchema {
+  collectionName: 'hero_images';
+  info: {
+    displayName: 'Hero Image';
+    pluralName: 'hero-images';
+    singularName: 'hero-image';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Hero_Photos: Schema.Attribute.Media<'images', true> &
+      Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::hero-image.hero-image'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
   collectionName: 'homepages';
   info: {
@@ -1291,6 +1320,7 @@ declare module '@strapi/strapi' {
       'api::daily-or-weekly-specials.daily-or-weekly-specials': ApiDailyOrWeeklySpecialsDailyOrWeeklySpecials;
       'api::footer.footer': ApiFooterFooter;
       'api::gallery-album.gallery-album': ApiGalleryAlbumGalleryAlbum;
+      'api::hero-image.hero-image': ApiHeroImageHeroImage;
       'api::homepage.homepage': ApiHomepageHomepage;
       'api::menu-categories.menu-categories': ApiMenuCategoriesMenuCategories;
       'api::menu-items.menu-items': ApiMenuItemsMenuItems;
