@@ -1,0 +1,39 @@
+{
+  "collectionName": "components_flavors_flavors",
+  "info": {
+    "displayName": "Flavors",
+    "icon": "restaurant"
+  },
+  "options": {},
+  "attributes": {
+    "Small_text_on_what_we_offer": {
+      "type": "text",
+      "required": true
+    },
+    "Dinner": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "Dessert": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "Drinks": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  },
+  "config": {}
+}

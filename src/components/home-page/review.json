@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_home_page_reviews",
+  "info": {
+    "displayName": "Review",
+    "icon": "volumeUp"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "review": {
+      "type": "blocks",
+      "required": true
+    },
+    "profile": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  },
+  "config": {}
+}

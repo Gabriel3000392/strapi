@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * hero-image service
+ * review service
  */
 
 const { createCoreService } = require('@strapi/strapi').factories;
 
-module.exports = createCoreService('api::hero-image.hero-image');
+module.exports = createCoreService('api::review.review');

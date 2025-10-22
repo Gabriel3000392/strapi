@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * hero-image controller
+ * event controller
  */
 
 const { createCoreController } = require('@strapi/strapi').factories;
 
-module.exports = createCoreController('api::hero-image.hero-image');
+module.exports = createCoreController('api::event.event');

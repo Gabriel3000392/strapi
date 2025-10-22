@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_home_page_why_choose_uses",
+  "info": {
+    "displayName": "Why_choose_us",
+    "icon": "thumbUp"
+  },
+  "options": {},
+  "attributes": {
+    "Hygienic_food": {
+      "type": "text"
+    },
+    "Fresh_environment": {
+      "type": "text"
+    },
+    "Skilled_chefs": {
+      "type": "text"
+    },
+    "Event_n_party": {
+      "type": "text"
+    }
+  },
+  "config": {}
+}

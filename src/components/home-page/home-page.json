@@ -1,0 +1,39 @@
+{
+  "collectionName": "components_home_page_home_pages",
+  "info": {
+    "displayName": "HomePage",
+    "icon": "cog"
+  },
+  "options": {},
+  "attributes": {
+    "Short_text_on_what_we_offer": {
+      "type": "text",
+      "required": true
+    },
+    "Dinner": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "Dessert": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "Drinks": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  },
+  "config": {}
+}

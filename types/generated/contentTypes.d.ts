@@ -418,29 +418,34 @@ export interface ApiDailyOrWeeklySpecialsDailyOrWeeklySpecials
   };
 }
 
-export interface ApiFooterFooter extends Struct.SingleTypeSchema {
-  collectionName: 'footers';
+export interface ApiEventEvent extends Struct.CollectionTypeSchema {
+  collectionName: 'events';
   info: {
-    displayName: 'Footer';
-    pluralName: 'footers';
-    singularName: 'footer';
+    displayName: 'Event';
+    pluralName: 'events';
+    singularName: 'event';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    columns: Schema.Attribute.Component<'footer-column.footer-column', true>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    legal_text: Schema.Attribute.Blocks;
+    date: Schema.Attribute.Date & Schema.Attribute.Required;
+    Description: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    end_time: Schema.Attribute.Time;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::footer.footer'
-    > &
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::event.event'> &
       Schema.Attribute.Private;
+    Name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    Photo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'Name'> & Schema.Attribute.Required;
+    start_time: Schema.Attribute.Time;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -485,35 +490,6 @@ export interface ApiGalleryAlbumGalleryAlbum
   };
 }
 
-export interface ApiHeroImageHeroImage extends Struct.SingleTypeSchema {
-  collectionName: 'hero_images';
-  info: {
-    displayName: 'Hero Image';
-    pluralName: 'hero-images';
-    singularName: 'hero-image';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    Hero_Photos: Schema.Attribute.Media<'images', true> &
-      Schema.Attribute.Required;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::hero-image.hero-image'
-    > &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
   collectionName: 'homepages';
   info: {
@@ -528,13 +504,11 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    featured_specials_count: Schema.Attribute.Integer &
-      Schema.Attribute.DefaultTo<3>;
-    FeaturedSection: Schema.Attribute.Component<
-      'featured-section.featured-section',
+    Flavours: Schema.Attribute.Component<'home-page.home-page', false>;
+    Hero_Photos: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
       true
-    >;
-    Hero: Schema.Attribute.Component<'hero.hero', false> &
+    > &
       Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -542,10 +516,13 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
       'api::homepage.homepage'
     > &
       Schema.Attribute.Private;
+    Our_story: Schema.Attribute.Component<'home-page.our-story', false>;
     publishedAt: Schema.Attribute.DateTime;
+    Review: Schema.Attribute.Component<'home-page.review', false>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    Why_choose_us: Schema.Attribute.Component<'home-page.why-choose-us', false>;
   };
 }
 
@@ -666,6 +643,37 @@ export interface ApiOpeningHoursOpeningHours
     note: Schema.Attribute.String;
     open_time: Schema.Attribute.Time;
     publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiReviewReview extends Struct.SingleTypeSchema {
+  collectionName: 'reviews';
+  info: {
+    displayName: 'Review';
+    pluralName: 'reviews';
+    singularName: 'review';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::review.review'
+    > &
+      Schema.Attribute.Private;
+    Name: Schema.Attribute.String & Schema.Attribute.Required;
+    Profile: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    Review: Schema.Attribute.Text & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1318,13 +1326,13 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::daily-or-weekly-specials.daily-or-weekly-specials': ApiDailyOrWeeklySpecialsDailyOrWeeklySpecials;
-      'api::footer.footer': ApiFooterFooter;
+      'api::event.event': ApiEventEvent;
       'api::gallery-album.gallery-album': ApiGalleryAlbumGalleryAlbum;
-      'api::hero-image.hero-image': ApiHeroImageHeroImage;
       'api::homepage.homepage': ApiHomepageHomepage;
       'api::menu-categories.menu-categories': ApiMenuCategoriesMenuCategories;
       'api::menu-items.menu-items': ApiMenuItemsMenuItems;
       'api::opening-hours.opening-hours': ApiOpeningHoursOpeningHours;
+      'api::review.review': ApiReviewReview;
       'api::site-settings.site-settings': ApiSiteSettingsSiteSettings;
       'api::sponsors-or-partners.sponsors-or-partners': ApiSponsorsOrPartnersSponsorsOrPartners;
       'api::tag.tag': ApiTagTag;

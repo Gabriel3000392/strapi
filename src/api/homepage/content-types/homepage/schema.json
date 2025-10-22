@@ -11,20 +11,36 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Hero": {
-      "type": "component",
-      "component": "hero.hero",
-      "repeatable": false,
-      "required": true
+    "Hero_Photos": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     },
-    "FeaturedSection": {
+    "Flavours": {
       "type": "component",
-      "component": "featured-section.featured-section",
-      "repeatable": true
+      "component": "home-page.home-page",
+      "repeatable": false
     },
-    "featured_specials_count": {
-      "type": "integer",
-      "default": 3
+    "Our_story": {
+      "type": "component",
+      "component": "home-page.our-story",
+      "repeatable": false
+    },
+    "Review": {
+      "type": "component",
+      "component": "home-page.review",
+      "repeatable": false
+    },
+    "Why_choose_us": {
+      "type": "component",
+      "component": "home-page.why-choose-us",
+      "repeatable": false
     }
   }
 }

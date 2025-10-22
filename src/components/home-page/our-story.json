@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_home_page_our_stories",
+  "info": {
+    "displayName": "Our_story",
+    "icon": "emotionHappy"
+  },
+  "options": {},
+  "attributes": {
+    "Our_story_short": {
+      "type": "blocks",
+      "required": true
+    },
+    "Close_up": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "Environment": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  },
+  "config": {}
+}
