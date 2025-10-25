@@ -6,10 +6,6 @@
   },
   "options": {},
   "attributes": {
-    "Our_story_short": {
-      "type": "blocks",
-      "required": true
-    },
     "Close_up": {
       "type": "media",
       "multiple": false,
@@ -25,6 +21,9 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "Our_story_short": {
+      "type": "text"
     }
   },
   "config": {}

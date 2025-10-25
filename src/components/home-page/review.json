@@ -10,10 +10,6 @@
       "type": "string",
       "required": true
     },
-    "review": {
-      "type": "blocks",
-      "required": true
-    },
     "profile": {
       "type": "media",
       "multiple": false,
@@ -21,6 +17,9 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "review_text": {
+      "type": "text"
     }
   },
   "config": {}

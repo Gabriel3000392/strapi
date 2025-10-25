@@ -63,7 +63,7 @@ export interface HomePageOurStory extends Struct.ComponentSchema {
   attributes: {
     Close_up: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     Environment: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
-    Our_story_short: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    Our_story_short: Schema.Attribute.Text;
   };
 }
 
@@ -76,7 +76,7 @@ export interface HomePageReview extends Struct.ComponentSchema {
   attributes: {
     name: Schema.Attribute.String & Schema.Attribute.Required;
     profile: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
-    review: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    review_text: Schema.Attribute.Text;
   };
 }
 
